@@ -12,7 +12,7 @@
 // tell Jenkins how to build projects from this repository
 node {
 	
-	def mvnHome = tool 'M3'
+	def mvnHome = tool 'apache-maven-3.0.5'
 	def mvnParams = '--batch-mode --update-snapshots -fae -Dmaven.repo.local=xpect-local-maven-repository -DtestOnly=false'
 
 	stage ('compile with Eclipse Luna and Xtext 2.9.2') {
