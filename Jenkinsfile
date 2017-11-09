@@ -9,10 +9,10 @@
  *   Moritz Eysholdt - Initial contribution and API
  *******************************************************************************/
 timestamps() {
-    String mailTo = 'jakub.siberski@numberfour.eu'
+
     try {
 
-        // tell Jenkins how to build projects from this repository
+
         node() {
 
             def mvnHome = tool 'apache-maven-3.0.5'
@@ -38,13 +38,9 @@ timestamps() {
             }
         }
 
-        mail(to: mailTo,
-                subject: "${env.JOB_NAME} (${env.BUILD_NUMBER}) succeeded",
-                body: "${env.BUILD_URL} succeeded - ${env.JOB_NAME} (#${env.BUILD_NUMBER}).")
+
     } catch (exc) {
-        mail(to: mailTo,
-                subject: "${env.JOB_NAME} (${env.BUILD_NUMBER}) failed",
-                body: "${env.BUILD_URL} is failing - ${env.JOB_NAME} (#${env.BUILD_NUMBER}). The following exception was caught : \n ${exc.toString()}")
+
         //rethrow otherwise job will always be green
         throw exc
     } finally {
