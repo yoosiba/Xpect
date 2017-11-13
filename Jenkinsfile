@@ -14,9 +14,9 @@ timestamps() {
         def mvnHome = tool 'apache-maven-3.0.5'
         def mvnParams = '--batch-mode --update-snapshots -fae -Dmaven.repo.local=xpect-local-maven-repository -DtestOnly=false'
         timeout(time: 1, unit: 'HOURS') {
-            stage('git checkout') {
-                checkout scm
-            }
+//            stage('git checkout') {
+//                checkout scm
+//            }
             stage('log configuration') {
                 sh """\
                                echo "===== checking tools versions ====="
