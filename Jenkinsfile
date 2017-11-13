@@ -22,6 +22,7 @@ timestamps() {
                 sh """\
                                echo "===== checking tools versions ====="
                                git status
+                               git reset --hard
                                git log
                                pwd
                                ls -ls
