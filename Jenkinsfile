@@ -21,6 +21,8 @@ timestamps() {
             stage('log configuration') {
                 sh """\
                                echo "===== checking tools versions ====="
+                               git status
+                               git log
                                pwd
                                ls -ls
                                ${mvnHome}/bin/mvn -v
