@@ -16,18 +16,17 @@ timestamps() {
         timeout(time: 1, unit: 'HOURS') {
             stage('prepare workspace') {
                 step([$class: 'WsCleanup'])
-                //checkout scm
-                checkout poll: false, scm: [ $class                             : 'GitSCM'
-                                             , branches                         : [[name: "**"]]
-                                             , extensions                       : [[$class: 'LocalBranch', localBranch: "**"]]
-                                             , userRemoteConfigs                : scm.userRemoteConfigs]
+                // we need to live with detached head, or we need to adjust settings:
+                // https://issues.jenkins-ci.org/browse/JENKINS-42860
+                checkout scm
             }
             stage('log configuration') {
                 sh """\
                                echo "===== checking tools versions ====="
                                git status
                                git reset --hard
-                               git log
+                               git rev-parse HEAD
+                               git config --get remote.origin.url
                                pwd
                                ls -ls
                                ${mvnHome}/bin/mvn -v
