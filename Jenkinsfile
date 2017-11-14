@@ -21,15 +21,15 @@ timestamps() {
                 checkout scm
             }
             stage('log configuration') {
+                echo("===== checking tools versions =====")
                 sh """\
-                               # "===== checking tools versions ====="
                                git config --get remote.origin.url
                                git reset --hard
                                pwd
                                ls -ls
                                ${mvnHome}/bin/mvn -v
-                               # "==================================="
                           """
+                echo("===================================")
             }
 
             stage('compile with Eclipse Luna and Xtext 2.9.2') {
