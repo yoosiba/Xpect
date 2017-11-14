@@ -16,7 +16,10 @@ timestamps() {
         timeout(time: 1, unit: 'HOURS') {
             stage('prepare workspace') {
                 step([$class: 'WsCleanup'])
-                checkout scm
+                //checkout scm
+                checkout poll: false, scm: [ $class                             : 'GitSCM'
+                                             , branches                         : [[name: scm.branches[0].name]]
+                                             , userRemoteConfigs                : scm.userRemoteConfigs]
             }
             stage('log configuration') {
                 sh """\
