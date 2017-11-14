@@ -26,7 +26,7 @@ timestamps() {
                                git config --get remote.origin.url
                                git reset --hard
                                pwd
-                               ls -ls
+                               ls -la
                                ${mvnHome}/bin/mvn -v
                           """
                 echo("===================================")
