@@ -44,13 +44,13 @@ timestamps() {
                             echo "compile with Eclipse Luna and Xtext 2.9.2"
                             
                             mvnParams="--batch-mode --update-snapshots -fae -Dmaven.repo.local=xpect-local-maven-repository -DtestOnly=false"
-                            mvn -P!tests -Dtarget-platform=eclipse_4_4_2-xtext_2_9_2 $mvnParams clean install
+                            ${mvnHome}/bin/mvn -P!tests -Dtarget-platform=eclipse_4_4_2-xtext_2_9_2 $mvnParams clean install
                             
                             echo -en "test with Eclipse Luna and Xtext 2.9.2"
-                            mvn -P!plugins -P!xtext-examples -Dtarget-platform=eclipse_4_4_2-xtext_2_9_2 $mvnParams clean integration-test
+                            ${mvnHome}/bin/mvn -P!plugins -P!xtext-examples -Dtarget-platform=eclipse_4_4_2-xtext_2_9_2 $mvnParams clean integration-test
                             
                             echo -en "test with Eclipse Mars and Xtext nighly"
-                            mvn -P!plugins -P!xtext-examples -Dtarget-platform=eclipse_4_5_0-xtext_nightly $mvnParams clean integration-test
+                            ${mvnHome}/bin/mvn -P!plugins -P!xtext-examples -Dtarget-platform=eclipse_4_5_0-xtext_nightly $mvnParams clean integration-test
                           """
                 }
 
